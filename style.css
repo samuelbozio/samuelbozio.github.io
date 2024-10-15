@@ -129,7 +129,8 @@ a:hover {
     .container {
         padding: 1rem; 
         height: 30vh;   
-        font-size: 5vw; 
+        font-size: 10vw; 
+        margin: 100;
     }
 
     .section {
