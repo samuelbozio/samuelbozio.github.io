@@ -174,4 +174,61 @@ a:hover {
     100% { transform: translateY(0) rotate(0deg); }
 }
 
+body {
+    background-color: #000000;
+    margin: 0;
+    padding: 0;
+    font-family: "Anton", sans-serif;
+    box-sizing: border-box;
+    overflow-x: hidden; 
+}
+
+.container {
+    display: flex;
+    justify-content: center; 
+    align-items: center;     
+    height: 60vh;          
+    background-color: transparent;
+    margin: 2rem; 
+    font-size: 6rem;
+    color: white;
+}
+
+.section {
+    color: white;
+    font-size: 2.5rem;
+    margin: 2rem; 
+    font-family: "Roboto", sans-serif;
+    font-weight: 100;
+}
+
+
+@media (max-width: 768px) {
+    .container {
+        font-size: 5rem; 
+    }
+    
+    .section {
+        font-size: 2rem; 
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        height: 25vh;
+    }
+
+    .container h1 {
+        font-size: 6rem; 
+    }
+
+    .section h1 {
+        font-size: 4rem !important;
+    }
+
+    .section {
+        font-size: 1.5rem; 
+    }
+}
+
 
