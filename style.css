@@ -51,7 +51,7 @@ body {
 
 .section {
     color: white;
-    font-size: 5vw; 
+    font-size: 3vw; 
     margin: 3rem; 
     font-family: "Roboto", sans-serif;
     font-weight: 100;
@@ -78,7 +78,7 @@ a:hover {
 }
 
 .container h1 {
-    font-size: 17vw; 
+    font-size: 15vw; 
     opacity: 0; 
     animation: fadeIn 3s ease-in-out forwards; 
 }
@@ -125,8 +125,6 @@ a:hover {
         font-size: 1.5rem; 
         height: 60px;      
     }
-
-  
 
     .container {
         padding: 1rem; 
