@@ -1,10 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,500;1,700;1,900&display=swap');
 
 html {
     scroll-behavior: smooth;
 }
-
 
 body {
     background-color: #000000;
@@ -12,24 +11,24 @@ body {
     padding: 0;
     font-family: "Anton", sans-serif;
     box-sizing: border-box;
-    overflow-x: hidden;
+    overflow-x: hidden; 
 }
-        ::-webkit-scrollbar {
-            width: 10px; 
-        }
 
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1; 
-        }
+::-webkit-scrollbar {
+    width: 10px; 
+}
 
-        ::-webkit-scrollbar-thumb {
-            background: #eb0000; 
-        }
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
 
-        ::-webkit-scrollbar-thumb:hover {
-            background: #555; 
-        }
+::-webkit-scrollbar-thumb {
+    background: #eb0000; 
+}
 
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
 
 .container {
     display: flex;
@@ -37,12 +36,11 @@ body {
     align-items: center;     
     height: 60vh;          
     background-color: transparent;
-    margin: 10rem;
-    margin-top: 11rem;
-    font-size: 6rem;
+    margin: 10rem auto; /* Auto to center */
+    font-size: 6vw; /* Use viewport width */
     color: white;
+    text-align: center; /* Center text */
 }
-
 
 .container img {
     background-color: white;
@@ -53,7 +51,7 @@ body {
 
 .section {
     color: white;
-    font-size: 2.5rem;
+    font-size: 2.5rem; 
     margin: 3rem; 
     font-family: "Roboto", sans-serif;
     font-weight: 100;
@@ -72,17 +70,15 @@ a {
 
 .section h1 {
     font-family: "Anton", sans-serif !important; 
-    font-size: 10rem !important;
+    font-size: 10vw; /* Use viewport width */
 }
 
 a:hover {
- transform: translateX(5px);   
+    transform: translateX(5px);   
 }
 
-
-
 .container h1 {
-    font-size: 12rem;
+    font-size: 12vw; /* Use viewport width */
     opacity: 0; 
     animation: fadeIn 3s ease-in-out forwards; 
 }
@@ -98,44 +94,8 @@ a:hover {
     }
 }
 
-
-@media (max-width: 768px) {
-    .nav {
-        font-size: 2rem; 
-        height: 80px;    
-    }
-
-    .container {
-        padding: 1rem; 
-        height: 30vh;   
-    }
-
-    .container img {
-        max-width: 90%;   
-        margin: 10px;     
-    }
-}
-
-
-@media (max-width: 480px) {
-    .nav {
-        font-size: 1.5rem; 
-        height: 60px;      
-    }
-
-
-    .container {
-        padding: 1rem; 
-        height: 30vh;   
-    }
-
-    .container img {
-        max-width: 100%;   
-        margin: 5px;       
-}
-
-
-
+.section {
+    position: relative; /* Added for absolute positioning */
 }
 
 .section::before {
@@ -174,79 +134,35 @@ a:hover {
     100% { transform: translateY(0) rotate(0deg); }
 }
 
-body {
-    background-color: #000000;
-    margin: 0;
-    padding: 0;
-    font-family: "Anton", sans-serif;
-    box-sizing: border-box;
-    overflow-x: hidden; 
-}
-
-.container {
-    display: flex;
-    justify-content: center; 
-    align-items: center;     
-    height: 60vh;          
-    background-color: transparent;
-    margin: 2rem; 
-    font-size: 6rem;
-    color: white;
-}
-
-.section {
-    color: white;
-    font-size: 2.5rem;
-    margin: 2rem; 
-    font-family: "Roboto", sans-serif;
-    font-weight: 100;
-}
-
-
+/* Responsive adjustments */
 @media (max-width: 768px) {
     .container {
-        font-size: 5rem; 
+        font-size: 5vw; 
+        height: auto; /* Remove fixed height */
     }
     
     .section {
         font-size: 2rem; 
+        margin: 1rem; /* Reduce margin */
     }
 }
 
-@media (max-width: 505px) {
+@media (max-width: 480px) {
     .container {
-        height: 25vh;
+        padding: 1rem; 
+        height: auto; /* Remove fixed height */
     }
 
     .container h1 {
-        font-size: 7rem !important; 
+        font-size: 8vw; 
     }
 
     .section h1 {
-        font-size: 5rem !important;
+        font-size: 5vw; 
     }
 
     .section {
         font-size: 1.5rem; 
     }
 }
-
-@media (max-width: 495px) {
-    .container {
-        height: 25vh;
-    }
-
-    .container h1 {
-        font-size: 6rem; 
-    }
-
-    .section h1 {
-        font-size: 4rem !important;
-    }
-
-    .section {
-        font-size: 1.5rem; 
-    }
-}
-
 
