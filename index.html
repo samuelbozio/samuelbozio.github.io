@@ -1,58 +1,549 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Portfolio</title>
-    <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samuel Bozio - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Space+Grotesk:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 25%, #ffd23f 50%, #ee4266 75%, #ff6b35 100%);
+            background-size: 400% 400%;
+            animation: gradientFlow 15s ease infinite;
+            color: #1a1a1a;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Textura sutil de grão */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='3' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.015'/%3E%3C/svg%3E");
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .noise {
+            display: none;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            min-height: 100vh;
+            padding: 3rem 5%;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            gap: 2rem;
+            padding: 2rem 0;
+            margin-bottom: 6rem;
+            border-bottom: 4px solid rgba(26, 26, 26, 0.8);
+            opacity: 0;
+            animation: slideDown 1s ease forwards;
+        }
+
+        .year {
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: 8px;
+            color: #ee4266;
+            align-self: center;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .role {
+            font-size: 0.85rem;
+            letter-spacing: 6px;
+            text-align: center;
+            color: #1a1a1a;
+            font-weight: 300;
+            align-self: center;
+        }
+
+        .contact-btn {
+            padding: 1rem 2rem;
+            background: transparent;
+            border: 3px solid #1a1a1a;
+            color: #1a1a1a;
+            cursor: pointer;
+            letter-spacing: 3px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            justify-self: end;
+            clip-path: polygon(8% 0%, 100% 0%, 92% 100%, 0% 100%);
+        }
+
+        .contact-btn:hover {
+            background: #ee4266;
+            color: #fff;
+            border-color: #ee4266;
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(238, 66, 102, 0.4);
+        }
+
+        /* Nome principal - BRUTAL */
+        .hero {
+            margin: 8rem 0;
+            position: relative;
+            opacity: 0;
+            animation: fadeIn 1.2s ease 0.3s forwards;
+        }
+
+        .name {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(6rem, 20vw, 18rem);
+            font-weight: 900;
+            line-height: 0.85;
+            letter-spacing: -8px;
+            color: #1a1a1a;
+            text-transform: uppercase;
+            position: relative;
+            display: inline-block;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.15);
+        }
+
+        .name::after {
+            content: 'SAMUEL BOZIO';
+            position: absolute;
+            top: 6px;
+            left: 6px;
+            color: transparent;
+            -webkit-text-stroke: 2px #ee4266;
+            z-index: -1;
+            opacity: 0.7;
+        }
+
+        .name-line {
+            display: block;
+            transform-origin: left;
+            animation: expandWidth 1s ease forwards;
+        }
+
+        .name-line:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        /* Decoração artística */
+        .art-line {
+            position: absolute;
+            height: 4px;
+            background: linear-gradient(90deg, #ff6b35, #ee4266);
+            transform-origin: left;
+            box-shadow: 0 2px 10px rgba(238, 66, 102, 0.4);
+        }
+
+        .line-1 {
+            width: 200px;
+            top: -40px;
+            left: 0;
+            opacity: 0;
+            animation: drawLine 0.8s ease 0.8s forwards;
+        }
+
+        .line-2 {
+            width: 150px;
+            bottom: -60px;
+            right: 20%;
+            opacity: 0;
+            animation: drawLine 0.8s ease 1.2s forwards;
+        }
+
+        /* Descrição */
+        .description-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin: 6rem 0;
+            padding: 4rem 0;
+            border-top: 2px solid rgba(26, 26, 26, 0.15);
+            border-bottom: 2px solid rgba(26, 26, 26, 0.15);
+            opacity: 0;
+            animation: fadeIn 1s ease 0.6s forwards;
+        }
+
+        .description {
+            font-size: 1.3rem;
+            line-height: 1.9;
+            color: #2a2a2a;
+            font-weight: 300;
+        }
+
+        .description strong {
+            color: #ee4266;
+            font-weight: 700;
+            font-style: italic;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+        }
+
+        .resume-box {
+            background: linear-gradient(135deg, #ee4266 0%, #ff6b35 100%);
+            padding: 3rem;
+            clip-path: polygon(0 0, 95% 0, 100% 100%, 5% 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 40px rgba(238, 66, 102, 0.3);
+        }
+
+        .resume-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(238, 66, 102, 0.5);
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+        }
+
+        .resume-link {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            letter-spacing: 3px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        /* Projetos */
+        .projects {
+            margin: 8rem 0;
+            opacity: 0;
+            animation: fadeIn 1s ease 0.9s forwards;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            color: #1a1a1a;
+            margin-bottom: 4rem;
+            text-transform: uppercase;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #ff6b35, #ee4266);
+            box-shadow: 0 2px 10px rgba(238, 66, 102, 0.4);
+        }
+
+        .project-item {
+            padding: 3rem 0;
+            border-bottom: 3px solid rgba(26, 26, 26, 0.1);
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 3rem;
+            align-items: center;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .project-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            width: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #ff6b35, #ee4266);
+            transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 2px 10px rgba(238, 66, 102, 0.4);
+        }
+
+        .project-item:hover::before {
+            width: 100%;
+        }
+
+        .project-item:hover {
+            transform: translateX(20px);
+        }
+
+        .project-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 900;
+            color: rgba(238, 66, 102, 0.3);
+        }
+
+        .project-link {
+            color: #1a1a1a;
+            text-decoration: none;
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            letter-spacing: 2px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            color: #ee4266;
+            letter-spacing: 4px;
+        }
+
+        .project-arrow {
+            font-size: 2rem;
+            color: #ff6b35;
+            transition: all 0.4s ease;
+            font-weight: 300;
+        }
+
+        .project-item:hover .project-arrow {
+            transform: translate(10px, -10px) scale(1.2);
+            color: #ee4266;
+        }
+
+        /* Animações */
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes expandWidth {
+            from {
+                transform: scaleX(0);
+            }
+            to {
+                transform: scaleX(1);
+            }
+        }
+
+        @keyframes drawLine {
+            from {
+                opacity: 0;
+                transform: scaleX(0);
+            }
+            to {
+                opacity: 1;
+                transform: scaleX(1);
+            }
+        }
+
+        /* Responsivo */
+        @media (max-width: 1024px) {
+            header {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .contact-btn {
+                justify-self: center;
+            }
+
+            .description-section {
+                grid-template-columns: 1fr;
+            }
+
+            .project-item {
+                grid-template-columns: auto 1fr auto;
+                gap: 1.5rem;
+            }
+
+            .name {
+                font-size: clamp(4rem, 15vw, 10rem);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 2rem 5%;
+            }
+
+            header {
+                margin-bottom: 3rem;
+            }
+
+            .hero {
+                margin: 4rem 0;
+            }
+
+            .project-item {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                padding: 2rem 0;
+            }
+
+            .project-number {
+                font-size: 2rem;
+            }
+
+            .project-arrow {
+                justify-self: end;
+            }
+
+            .line-1, .line-2 {
+                display: none;
+            }
+        }
+
+        /* Efeito de papel rasgado */
+        .tear-effect {
+            position: absolute;
+            width: 100%;
+            height: 20px;
+            bottom: -10px;
+            left: 0;
+            background: linear-gradient(135deg, #f5f1e8 25%, transparent 25%),
+                        linear-gradient(225deg, #f5f1e8 25%, transparent 25%);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 0;
+        }
+    </style>
 </head>
-
 <body>
-    <div class="wrapper">
-        <div class="top">
+    <div class="noise"></div>
+    
+    <div class="container">
+        <header>
+            <div class="year">2025</div>
+            <div class="role">FULL STACK DEVELOPER</div>
+            <button class="contact-btn" onclick="window.location.href='mailto:contato@samuelbozio.com'">CONTACT ME</button>
+        </header>
 
+        <section class="hero">
+            <div class="art-line line-1"></div>
+            <h1 class="name">
+                <span class="name-line">SAMUEL</span>
+                <span class="name-line">BOZIO</span>
+            </h1>
+            <div class="art-line line-2"></div>
+        </section>
 
-
-
-            <div class="top-left">
-                <span>2025</span>
-            </div>
-            <div class="top-center">FULL STACK DEVELOPER</div>
-            <div class="top-right">CONTACT ME</div>
-
-
-
-        </div>
-        <div class="title">SAMUEL <br> BOZIO</div>
-        <div class="bottom">
+        <section class="description-section">
             <div class="description">
-                CREATIVITY, TRANSPARENCY, AND ORGANIZATION ARE VALUES <br />
-                I CHERISH WHEN SEEKING A SOLUTION TO A PROBLEM.
-                <br>
-                <br>
-                <a class="resume"
-                    href="https://docs.google.com/document/d/1KuuIF7R9K_-kcEGCoAG1KJdYFXJm13RJYGRwno5-lRU/edit?usp=sharing">
-                    - VIEW MY RESUME HERE!</a>
+                <strong>Creativity</strong>, <strong>transparency</strong>, and <strong>organization</strong> 
+                are values I cherish when seeking a solution to a problem.
             </div>
-            <div class="list">
-                <div>01.<br /><a href="https://github.com/samuelbozio/TesteInterProcess-ClinicaACME" target="_blank">TESTE INTERPROCESS (C#/.NET, JS E MYSQL) ↗</a></div>
-                <div>02.<br /><a href="https://github.com/samuelbozio/Teste_OverStep" target="_blank">TESTE OVERSTEP (JS, NODE E MYSQL) ↗</a></div>
-                <div>03.<br /><a href="https://github.com/samuelbozio/TesteTecnicoVersoTech" target="_blank">TESTE VERSOTECH PLENO (REACT) ↗</a></div>
-                <div>04.<br /><a href="https://github.com/samuelbozio/Shared-Drawing-Panel.js" target="_blank">SHARED
-                        DRAWING PANEL (NODE) ↗</a></div>
-                <div>05.<br /><a href="https://github.com/samuelbozio/Flutter_AppLayout" target="_blank">E-COMMERCE LAYOUT (FLUTTER) ↗</a></div>
-                <div>06.<br /><a href="https://github.com/samuelbozio/AudioVisualizer_JavaScript/tree/main"
-                        target="_blank">AUDIOVISUALIZER (JAVASCRIPT) ↗</a></div>
+            <div class="resume-box">
+                <a class="resume-link" href="https://docs.google.com/document/d/1KuuIF7R9K_-kcEGCoAG1KJdYFXJm13RJYGRwno5-lRU/edit?usp=sharing" target="_blank">
+                    VIEW MY<br>RESUME
+                </a>
+            </div>
+        </section>
+
+        <section class="projects">
+            <h2 class="section-title">Selected Works</h2>
+            
+            <div class="project-item">
+                <span class="project-number">01</span>
+                <a class="project-link" href="https://github.com/samuelbozio/TesteInterProcess-ClinicaACME" target="_blank">
+                    TESTE INTERPROCESS
+                </a>
+                <span class="project-arrow">↗</span>
             </div>
 
+            <div class="project-item">
+                <span class="project-number">02</span>
+                <a class="project-link" href="https://github.com/samuelbozio/Teste_OverStep" target="_blank">
+                    TESTE OVERSTEP
+                </a>
+                <span class="project-arrow">↗</span>
+            </div>
 
-        </div>
+            <div class="project-item">
+                <span class="project-number">03</span>
+                <a class="project-link" href="https://github.com/samuelbozio/TesteTecnicoVersoTech" target="_blank">
+                    TESTE VERSOTECH PLENO
+                </a>
+                <span class="project-arrow">↗</span>
+            </div>
+
+            <div class="project-item">
+                <span class="project-number">04</span>
+                <a class="project-link" href="https://github.com/samuelbozio/Shared-Drawing-Panel.js" target="_blank">
+                    SHARED DRAWING PANEL
+                </a>
+                <span class="project-arrow">↗</span>
+            </div>
+
+            <div class="project-item">
+                <span class="project-number">05</span>
+                <a class="project-link" href="https://github.com/samuelbozio/Flutter_AppLayout" target="_blank">
+                    E-COMMERCE LAYOUT
+                </a>
+                <span class="project-arrow">↗</span>
+            </div>
+
+            <div class="project-item">
+                <span class="project-number">06</span>
+                <a class="project-link" href="https://github.com/samuelbozio/AudioVisualizer_JavaScript/tree/main" target="_blank">
+                    AUDIOVISUALIZER
+                </a>
+                <span class="project-arrow">↗</span>
+            </div>
+        </section>
     </div>
 
+    <script>
+        // Parallax suave no scroll
+        let scrollPos = 0;
+        
+        window.addEventListener('scroll', () => {
+            scrollPos = window.pageYOffset;
+            
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                hero.style.transform = `translateY(${scrollPos * 0.3}px)`;
+            }
+        });
 
+        // Animação de entrada dos projetos
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
 
-    <script src="script.js"></script>
+        document.querySelectorAll('.project-item').forEach((item, index) => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(50px)';
+            item.style.transition = `all 0.6s ease ${index * 0.1}s`;
+            observer.observe(item);
+        });
+    </script>
 </body>
-
 </html>
