@@ -3,609 +3,451 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Samuel Bozio - Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Space+Grotesk:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>Samuel Bozio - AOL 99</title>
     <style>
+        :root {
+            /* Paleta AOL / Windows 95 */
+            --win-gray: #c0c0c0;
+            --win-dark: #808080;
+            --win-light: #ffffff;
+            --win-black: #000000;
+            --win-blue-dark: #000080;
+            --win-blue-light: #1084d0;
+            
+            /* Toque Vaporwave */
+            --vapor-pink: #ff71ce;
+            --vapor-cyan: #01cdfe;
+            --vapor-bg: #2b213a;
+        }
+
         * {
-            margin: 0;
-            padding: 0;
             box-sizing: border-box;
         }
 
         body {
-            font-family: 'Space Grotesk', sans-serif;
-            background: linear-gradient(135deg, #1a1a1a 0%, #8b2500 20%, #d62828 40%, #7b1e1e 60%, #2a0a0a 80%, #1a1a1a 100%);
-            background-size: 400% 400%;
-            animation: gradientFlow 20s ease infinite;
-            color: #f5f5f5;
-            overflow-x: hidden;
-            position: relative;
-            cursor: none;
-        }
-
-        @keyframes gradientFlow {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        /* Textura sutil de grão */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='4' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.15'/%3E%3C/svg%3E");
-            z-index: 0;
-            pointer-events: none;
-            mix-blend-mode: overlay;
-        }
-
-        /* Cursor customizado */
-        .custom-cursor {
-            width: 20px;
-            height: 20px;
-            border: 2px solid #d62828;
-            background: rgba(214, 40, 40, 0.3);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9999;
-            transform: translate(-50%, -50%);
-            transition: all 0.15s ease;
-            mix-blend-mode: screen;
-        }
-
-        .custom-cursor.hover {
-            width: 40px;
-            height: 40px;
-            background: rgba(214, 40, 40, 0.5);
-            border-color: #ff6b6b;
-        }
-
-        .noise {
-            display: none;
-        }
-
-        .container {
-            position: relative;
-            z-index: 1;
-            min-height: 100vh;
-            padding: 3rem 5%;
-            max-width: 1600px;
-            margin: 0 auto;
-        }
-
-        /* Header */
-        header {
-            display: grid;
-            grid-template-columns: 1fr 2fr 1fr;
-            gap: 2rem;
-            padding: 2rem 0;
-            margin-bottom: 6rem;
-            border-bottom: 4px solid rgba(214, 40, 40, 0.6);
-            opacity: 0;
-            animation: slideDown 1s ease forwards;
-        }
-
-        .year {
-            font-size: 1.2rem;
-            font-weight: 700;
-            letter-spacing: 8px;
-            color: #d62828;
-            align-self: center;
-            text-shadow: 2px 2px 8px rgba(214, 40, 40, 0.5);
-        }
-
-        .role {
-            font-size: 0.85rem;
-            letter-spacing: 6px;
-            text-align: center;
-            color: #e5e5e5;
-            font-weight: 300;
-            align-self: center;
-        }
-
-        .contact-btn {
-            padding: 1rem 2rem;
-            background: transparent;
-            border: 3px solid #d62828;
-            color: #e5e5e5;
-            cursor: pointer;
-            letter-spacing: 3px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            justify-self: end;
-            clip-path: polygon(8% 0%, 100% 0%, 92% 100%, 0% 100%);
-        }
-
-        .contact-btn:hover {
-            background: #d62828;
-            color: #fff;
-            border-color: #ff6b6b;
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 15px 40px rgba(214, 40, 40, 0.6);
-        }
-
-        /* Nome principal - BRUTAL */
-        .hero {
-            margin: 8rem 0;
-            position: relative;
-            opacity: 0;
-            animation: fadeIn 1.2s ease 0.3s forwards;
-        }
-
-        .name {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(6rem, 20vw, 18rem);
-            font-weight: 900;
-            line-height: 0.85;
-            letter-spacing: -8px;
-            color: #f5f5f5;
-            text-transform: uppercase;
-            position: relative;
-            display: inline-block;
-            text-shadow: 3px 3px 10px rgba(214, 40, 40, 0.5);
-        }
-
-        .name::after {
-            content: 'SAMUEL BOZIO';
-            position: absolute;
-            top: 6px;
-            left: 6px;
-            color: transparent;
-            -webkit-text-stroke: 2px #d62828;
-            z-index: -1;
-            opacity: 0.7;
-        }
-
-        .name-line {
-            display: block;
-            transform-origin: left;
-            animation: expandWidth 1s ease forwards;
-        }
-
-        .name-line:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-
-        /* Decoração artística */
-        .art-line {
-            position: absolute;
-            height: 4px;
-            background: linear-gradient(90deg, #8b2500, #d62828);
-            transform-origin: left;
-            box-shadow: 0 2px 15px rgba(214, 40, 40, 0.6);
-        }
-
-        .line-1 {
-            width: 200px;
-            top: -40px;
-            left: 0;
-            opacity: 0;
-            animation: drawLine 0.8s ease 0.8s forwards;
-        }
-
-        .line-2 {
-            width: 150px;
-            bottom: -60px;
-            right: 20%;
-            opacity: 0;
-            animation: drawLine 0.8s ease 1.2s forwards;
-        }
-
-        /* Descrição */
-        .description-section {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            margin: 6rem 0;
-            padding: 4rem 0;
-            border-top: 2px solid rgba(214, 40, 40, 0.3);
-            border-bottom: 2px solid rgba(214, 40, 40, 0.3);
-            opacity: 0;
-            animation: fadeIn 1s ease 0.6s forwards;
-        }
-
-        .description {
-            font-size: 1.3rem;
-            line-height: 1.9;
-            color: #d5d5d5;
-            font-weight: 300;
-        }
-
-        .description strong {
-            color: #ff6b6b;
-            font-weight: 700;
-            font-style: italic;
-            font-family: 'Playfair Display', serif;
-            font-size: 1.4rem;
-        }
-
-        .resume-box {
-            background: linear-gradient(135deg, #8b2500 0%, #d62828 100%);
-            padding: 3rem;
-            clip-path: polygon(0 0, 95% 0, 100% 100%, 5% 100%);
+            margin: 0;
+            padding: 0;
+            font-family: 'Tahoma', 'Verdana', sans-serif;
+            background-color: var(--vapor-bg);
+            /* Grid Vaporwave no fundo */
+            background-image: 
+                linear-gradient(rgba(255, 113, 206, 0.2) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(1, 205, 254, 0.2) 1px, transparent 1px);
+            background-size: 40px 40px;
+            background-position: center bottom;
+            height: 100vh;
+            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.4s ease;
-            box-shadow: 0 10px 40px rgba(214, 40, 40, 0.4);
         }
 
-        .resume-box:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 60px rgba(214, 40, 40, 0.7);
-            background: linear-gradient(135deg, #d62828 0%, #ff6b6b 100%);
+        /* Utilitário para o efeito 3D de botão/janela clássico */
+        .bevel-up {
+            background: var(--win-gray);
+            border-top: 2px solid var(--win-light);
+            border-left: 2px solid var(--win-light);
+            border-right: 2px solid var(--win-dark);
+            border-bottom: 2px solid var(--win-black);
+            box-shadow: 1px 1px 0px 0px rgba(0,0,0,0.5);
         }
 
-        .resume-link {
-            color: #fff;
-            text-decoration: none;
-            font-size: 1.1rem;
-            letter-spacing: 3px;
-            font-weight: 700;
+        .bevel-down {
+            border-top: 2px solid var(--win-dark);
+            border-left: 2px solid var(--win-dark);
+            border-right: 2px solid var(--win-light);
+            border-bottom: 2px solid var(--win-light);
+            background: #fff;
+        }
+
+        /* Janela Principal */
+        .main-window {
+            width: 95%;
+            max-width: 1200px;
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        /* Barra de Título */
+        .title-bar {
+            background: linear-gradient(90deg, var(--win-blue-dark), var(--win-blue-light));
+            padding: 4px 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+            letter-spacing: 1px;
+            font-size: 14px;
+        }
+
+        .window-controls button {
+            width: 20px;
+            height: 20px;
+            font-size: 10px;
+            font-weight: bold;
+            line-height: 1;
+            margin-left: 4px;
+            cursor: pointer;
+        }
+
+        /* Barra de Menu (File, Edit...) */
+        .menu-bar {
+            padding: 4px;
+            display: flex;
+            gap: 15px;
+            font-size: 12px;
+            border-bottom: 1px solid var(--win-dark);
+        }
+
+        .menu-item {
+            cursor: pointer;
+        }
+        .menu-item:hover {
+            text-decoration: underline;
+        }
+
+        /* Barra de Ferramentas (Ícones) */
+        .toolbar {
+            padding: 8px;
+            display: flex;
+            gap: 10px;
+            border-bottom: 1px solid var(--win-dark);
+            overflow-x: auto;
+        }
+
+        .tool-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 50px;
+            font-size: 10px;
+            cursor: pointer;
             text-align: center;
         }
-
-        /* Projetos */
-        .projects {
-            margin: 8rem 0;
-            opacity: 0;
-            animation: fadeIn 1s ease 0.9s forwards;
+        
+        .tool-btn:active {
+            border-top: 2px solid var(--win-dark);
+            border-left: 2px solid var(--win-dark);
+            border-right: 2px solid var(--win-light);
+            border-bottom: 2px solid var(--win-light);
         }
 
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            font-weight: 900;
-            letter-spacing: 2px;
-            color: #f5f5f5;
-            margin-bottom: 4rem;
-            text-transform: uppercase;
-            position: relative;
-            padding-bottom: 1rem;
+        .icon-placeholder {
+            font-size: 20px;
+            margin-bottom: 2px;
         }
 
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100px;
-            height: 4px;
-            background: linear-gradient(90deg, #8b2500, #d62828);
-            box-shadow: 0 2px 15px rgba(214, 40, 40, 0.6);
-        }
-
-        .project-item {
-            padding: 3rem 0;
-            border-bottom: 3px solid rgba(214, 40, 40, 0.2);
+        /* Corpo da Aplicação */
+        .app-body {
+            flex: 1;
             display: grid;
-            grid-template-columns: auto 1fr auto;
-            gap: 3rem;
-            align-items: center;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            grid-template-columns: 220px 1fr 200px;
+            gap: 4px;
+            padding: 4px;
+            background: var(--win-gray);
+            overflow: hidden;
+        }
+
+        /* Sidebar Esquerda (Canais) */
+        .sidebar-left {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .channel-list {
+            flex: 1;
+            padding: 5px;
+            overflow-y: auto;
+        }
+
+        .channel-btn {
+            display: block;
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 4px;
+            text-align: left;
+            font-size: 12px;
+            font-weight: bold;
+            background: var(--win-gray);
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.1s;
+        }
+
+        .channel-btn:hover {
+            background: var(--win-blue-dark);
+            color: white;
+            border: 2px dotted white;
+        }
+
+        /* Área Central (Navegador) */
+        .browser-area {
+            background: white;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
             position: relative;
         }
 
-        .project-item::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -3px;
-            width: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #8b2500, #d62828);
-            transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 2px 15px rgba(214, 40, 40, 0.6);
+        .browser-header {
+            background: linear-gradient(to bottom, #e0e0e0, #ffffff);
+            padding: 15px;
+            border-bottom: 2px solid var(--win-dark);
         }
 
-        .project-item:hover::before {
-            width: 100%;
+        .hero-title {
+            font-family: 'Times New Roman', serif;
+            font-size: 2.5rem;
+            margin: 0;
+            color: var(--win-black);
+        }
+        
+        .hero-subtitle {
+            color: var(--win-blue-dark);
+            font-style: italic;
         }
 
-        .project-item:hover {
-            transform: translateX(20px);
+        .content-grid {
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
         }
 
-        .project-number {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            font-weight: 900;
-            color: rgba(214, 40, 40, 0.4);
+        .article-box {
+            border: 1px solid #ccc;
+            padding: 10px;
         }
 
-        .project-link {
-            color: #e5e5e5;
-            text-decoration: none;
-            font-size: clamp(1.2rem, 3vw, 2rem);
-            letter-spacing: 2px;
-            font-weight: 700;
-            transition: all 0.3s ease;
+        .article-title {
+            color: var(--win-blue-dark);
+            text-decoration: underline;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            display: block;
         }
 
-        .project-link:hover {
-            color: #ff6b6b;
-            letter-spacing: 4px;
+        .resume-alert {
+            background: #ffffc0;
+            border: 1px solid #999;
+            padding: 10px;
+            margin-top: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
         }
 
-        .project-arrow {
-            font-size: 2rem;
-            color: #d62828;
-            transition: all 0.4s ease;
-            font-weight: 300;
+        /* Sidebar Direita (Buddy List) */
+        .buddy-list {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .buddy-header {
+            background: var(--win-dark);
+            color: white;
+            padding: 2px 5px;
+            font-size: 11px;
         }
 
-        .project-item:hover .project-arrow {
-            transform: translate(10px, -10px) scale(1.2);
-            color: #ff6b6b;
+        .buddy-content {
+            background: white;
+            flex: 1;
+            padding: 5px;
+            font-size: 12px;
+            font-family: 'Courier New', monospace;
         }
 
-        /* Animações */
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .buddy-item {
+            cursor: pointer;
+            padding: 2px 0;
+        }
+        .buddy-item:hover {
+            background: var(--win-blue-dark);
+            color: white;
+        }
+        .status-idle { color: #888; }
+        .status-online { color: green; font-weight: bold; }
+
+        /* Estilo Vaporwave Específico */
+        .vapor-ad {
+            margin-top: 20px;
+            background: black;
+            color: var(--vapor-pink);
+            padding: 10px;
+            text-align: center;
+            font-family: 'Courier New';
+            animation: pulse 2s infinite;
         }
 
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-            }
+        @keyframes pulse {
+            0% { text-shadow: 0 0 5px var(--vapor-pink); }
+            50% { text-shadow: 0 0 15px var(--vapor-cyan); }
+            100% { text-shadow: 0 0 5px var(--vapor-pink); }
         }
 
-        @keyframes expandWidth {
-            from {
-                transform: scaleX(0);
-            }
-            to {
-                transform: scaleX(1);
-            }
-        }
-
-        @keyframes drawLine {
-            from {
-                opacity: 0;
-                transform: scaleX(0);
-            }
-            to {
-                opacity: 1;
-                transform: scaleX(1);
-            }
-        }
-
-        /* Responsivo */
-        @media (max-width: 1024px) {
-            header {
+        /* Responsividade */
+        @media (max-width: 900px) {
+            .app-body {
                 grid-template-columns: 1fr;
-                text-align: center;
+                overflow-y: auto;
             }
-
-            .contact-btn {
-                justify-self: center;
+            .sidebar-left, .sidebar-right {
+                display: none; /* Simplificando para mobile */
             }
-
-            .description-section {
-                grid-template-columns: 1fr;
-            }
-
-            .project-item {
-                grid-template-columns: auto 1fr auto;
-                gap: 1.5rem;
-            }
-
-            .name {
-                font-size: clamp(4rem, 15vw, 10rem);
-            }
-
-            .custom-cursor {
+            .toolbar {
                 display: none;
             }
-
-            body {
-                cursor: auto;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 2rem 5%;
-            }
-
-            header {
-                margin-bottom: 3rem;
-            }
-
-            .hero {
-                margin: 4rem 0;
-            }
-
-            .project-item {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-                padding: 2rem 0;
-            }
-
-            .project-number {
-                font-size: 2rem;
-            }
-
-            .project-arrow {
-                justify-self: end;
-            }
-
-            .line-1, .line-2 {
-                display: none;
-            }
-
-            .custom-cursor {
-                display: none;
-            }
-
-            body {
-                cursor: auto;
-            }
-        }
-
-        /* Efeito de papel rasgado */
-        .tear-effect {
-            position: absolute;
-            width: 100%;
-            height: 20px;
-            bottom: -10px;
-            left: 0;
-            background: linear-gradient(135deg, #f5f1e8 25%, transparent 25%),
-                        linear-gradient(225deg, #f5f1e8 25%, transparent 25%);
-            background-size: 20px 20px;
-            background-position: 0 0, 10px 0;
         }
     </style>
 </head>
 <body>
-    <div class="custom-cursor"></div>
-    
-    <div class="container">
-        <header>
-            <div class="year">2025</div>
-            <div class="role">FULL STACK DEVELOPER</div>
-            <button class="contact-btn" onclick="window.location.href='mailto:contato@samuelbozio.com'">CONTACT ME</button>
-        </header>
 
-        <section class="hero">
-            <div class="art-line line-1"></div>
-            <h1 class="name">
-                <span class="name-line">SAMUEL</span>
-                <span class="name-line">BOZIO</span>
-            </h1>
-            <div class="art-line line-2"></div>
-        </section>
-
-        <section class="description-section">
-            <div class="description">
-                <strong>Creativity</strong>, <strong>transparency</strong>, and <strong>organization</strong> 
-                are values I cherish when seeking a solution to a problem.
+    <div class="main-window bevel-up">
+        
+        <div class="title-bar">
+            <span>America Online - [Welcome, SamuelBozio!]</span>
+            <div class="window-controls">
+                <button class="bevel-up">_</button>
+                <button class="bevel-up">□</button>
+                <button class="bevel-up">X</button>
             </div>
-            <div class="resume-box">
-                <a class="resume-link" href="https://docs.google.com/document/d/1KuuIF7R9K_-kcEGCoAG1KJdYFXJm13RJYGRwno5-lRU/edit?usp=sharing" target="_blank">
-                    VIEW MY<br>RESUME
-                </a>
-            </div>
-        </section>
+        </div>
 
-        <section class="projects">
-            <h2 class="section-title">Selected Works</h2>
+        <div class="menu-bar">
+            <span class="menu-item">File</span>
+            <span class="menu-item">Edit</span>
+            <span class="menu-item">Window</span>
+            <span class="menu-item">Sign Off</span>
+            <span class="menu-item">Help</span>
+        </div>
+
+        <div class="toolbar">
+            <div class="tool-btn bevel-up" onclick="window.location.href='mailto:contato@samuelbozio.com'">
+                <div class="icon-placeholder">📧</div>
+                Read Mail
+            </div>
+            <div class="tool-btn bevel-up">
+                <div class="icon-placeholder">📝</div>
+                Write
+            </div>
+            <div class="tool-btn bevel-up" onclick="window.open('https://github.com/samuelbozio', '_blank')">
+                <div class="icon-placeholder">💾</div>
+                My Files
+            </div>
+            <div class="tool-btn bevel-up">
+                <div class="icon-placeholder">❤️</div>
+                Favorites
+            </div>
+            <div class="tool-btn bevel-up">
+                <div class="icon-placeholder">🌐</div>
+                Internet
+            </div>
+        </div>
+
+        <div style="padding: 4px; display: flex; align-items: center; gap: 5px; border-bottom: 1px solid gray;">
+            <span style="font-size: 11px;">Address:</span>
+            <input type="text" value="http://www.samuelbozio.com/portfolio" style="flex: 1; border: 2px solid gray; border-style: inset; padding: 2px;">
+            <button class="bevel-up" style="padding: 0 10px; cursor: pointer;">Go</button>
+        </div>
+
+        <div class="app-body">
             
-            <div class="project-item">
-                <span class="project-number">01</span>
-                <a class="project-link" href="https://github.com/samuelbozio/TesteInterProcess-ClinicaACME" target="_blank">
-                    TESTE INTERPROCESS
-                </a>
-                <span class="project-arrow">↗</span>
+            <div class="sidebar-left">
+                <div class="bevel-up channel-list">
+                    <div style="text-align: center; margin-bottom: 10px;">
+                        <span style="font-size: 30px; color: var(--win-blue-light);">⚠️</span><br>
+                        <b>SAMUEL<br>ONLINE</b>
+                    </div>
+                    <button class="channel-btn">👋 Welcome</button>
+                    <button class="channel-btn">💻 Computing</button>
+                    <button class="channel-btn">🎮 Games</button>
+                    <button class="channel-btn">💼 Work Place</button>
+                    <button class="channel-btn">🌐 Web Dev</button>
+                    <button class="channel-btn">🎨 Creativity</button>
+                </div>
             </div>
 
-            <div class="project-item">
-                <span class="project-number">02</span>
-                <a class="project-link" href="https://github.com/samuelbozio/Teste_OverStep" target="_blank">
-                    TESTE OVERSTEP
-                </a>
-                <span class="project-arrow">↗</span>
+            <div class="browser-area bevel-down">
+                <div class="browser-header">
+                    <h1 class="hero-title">Welcome, Today on Samuel's</h1>
+                    <span class="hero-subtitle">August 4, 2025 // Weather: Cloudy in Server Room</span>
+                </div>
+
+                <div class="content-grid">
+                    <div>
+                        <div style="margin-bottom: 20px;">
+                            <img src="https://picsum.photos/seed/tech/400/200" style="width: 100%; border: 1px solid black; margin-bottom: 10px;">
+                            <h3 style="margin: 0;">FULL STACK DEVELOPER</h3>
+                            <p style="font-size: 13px;">Creativity, transparency, and organization are values I cherish when seeking a solution to a problem.</p>
+                            
+                            <div class="resume-alert">
+                                <b>SYSTEM NOTICE:</b><br>
+                                Resume.doc is available for download.<br>
+                                <a href="https://docs.google.com/document/d/1KuuIF7R9K_-kcEGCoAG1KJdYFXJm13RJYGRwno5-lRU/edit?usp=sharing" target="_blank" style="color: blue;">[Click Here to Download]</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="bevel-up" style="background: #e0e0e0; padding: 5px; margin-bottom: 10px; font-weight: bold;">
+                            📂 Selected Works (Top Pick)
+                        </div>
+                        
+                        <div style="font-size: 13px;">
+                            <a href="https://github.com/samuelbozio/TesteInterProcess-ClinicaACME" class="article-title" target="_blank">01. Teste InterProcess</a>
+                            <p>Sistema clínico completo. Muito robusto.</p>
+
+                            <a href="https://github.com/samuelbozio/Teste_OverStep" class="article-title" target="_blank">02. Teste Overstep</a>
+                            <p>Soluções criativas em backend.</p>
+
+                            <a href="https://github.com/samuelbozio/Shared-Drawing-Panel.js" class="article-title" target="_blank">03. Shared Drawing Panel</a>
+                            <p>Interactive canvas using JS sockets.</p>
+                            
+                            <a href="https://github.com/samuelbozio/AudioVisualizer_JavaScript" class="article-title" target="_blank">04. Audio Visualizer</a>
+                            <p>Experiments with Web Audio API.</p>
+                        </div>
+
+                        <div class="vapor-ad bevel-down">
+                            HOT NEW TECH!<br>
+                            CLICK HERE TO LEARN FLUTTER
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="project-item">
-                <span class="project-number">03</span>
-                <a class="project-link" href="https://github.com/samuelbozio/TesteTecnicoVersoTech" target="_blank">
-                    TESTE VERSOTECH PLENO
-                </a>
-                <span class="project-arrow">↗</span>
+            <div class="sidebar-left"> <div class="bevel-up" style="height: 100%; display: flex; flex-direction: column;">
+                    <div class="title-bar" style="font-size: 11px; padding: 2px;">Buddy List</div>
+                    <div class="buddy-content bevel-down">
+                        <div style="margin-bottom: 5px;"><b>Buddies Online</b></div>
+                        <div class="buddy-item status-online">Recruiter_01</div>
+                        <div class="buddy-item status-online">TechLead_Bob</div>
+                        <div class="buddy-item status-idle">HR_Department</div>
+                        <div class="buddy-item status-idle">JavaFanboy99</div>
+                        <br>
+                        <div style="margin-bottom: 5px;"><b>Offline</b></div>
+                        <div class="buddy-item">MyFreeTime</div>
+                    </div>
+                    <div style="padding: 5px; text-align: center;">
+                        <button class="bevel-up" style="padding: 2px 8px; cursor: pointer;">IM</button>
+                        <button class="bevel-up" style="padding: 2px 8px; cursor: pointer;">Setup</button>
+                    </div>
+                </div>
             </div>
 
-            <div class="project-item">
-                <span class="project-number">04</span>
-                <a class="project-link" href="https://github.com/samuelbozio/Shared-Drawing-Panel.js" target="_blank">
-                    SHARED DRAWING PANEL
-                </a>
-                <span class="project-arrow">↗</span>
-            </div>
+        </div>
 
-            <div class="project-item">
-                <span class="project-number">05</span>
-                <a class="project-link" href="https://github.com/samuelbozio/Flutter_AppLayout" target="_blank">
-                    E-COMMERCE LAYOUT
-                </a>
-                <span class="project-arrow">↗</span>
-            </div>
-
-            <div class="project-item">
-                <span class="project-number">06</span>
-                <a class="project-link" href="https://github.com/samuelbozio/AudioVisualizer_JavaScript/tree/main" target="_blank">
-                    AUDIOVISUALIZER
-                </a>
-                <span class="project-arrow">↗</span>
-            </div>
-        </section>
+        <div class="bevel-down" style="padding: 2px 5px; background: #e0e0e0; font-size: 11px; color: #555;">
+            Connected at 56k... | Time Remaining: ∞
+        </div>
     </div>
 
-    <script>
-        // Cursor customizado
-        const cursor = document.querySelector('.custom-cursor');
-        let mouseX = 0, mouseY = 0;
-
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-            cursor.style.left = mouseX + 'px';
-            cursor.style.top = mouseY + 'px';
-        });
-
-        // Efeito hover em elementos clicáveis
-        const interactiveElements = document.querySelectorAll('a, button');
-        interactiveElements.forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                cursor.classList.add('hover');
-            });
-            el.addEventListener('mouseleave', () => {
-                cursor.classList.remove('hover');
-            });
-        });
-
-        // Parallax suave no scroll
-        let scrollPos = 0;
-        
-        window.addEventListener('scroll', () => {
-            scrollPos = window.pageYOffset;
-            
-            const hero = document.querySelector('.hero');
-            if (hero) {
-                hero.style.transform = `translateY(${scrollPos * 0.3}px)`;
-            }
-        });
-
-        // Animação de entrada dos projetos
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.project-item').forEach((item, index) => {
-            item.style.opacity = '0';
-            item.style.transform = 'translateY(50px)';
-            item.style.transition = `all 0.6s ease ${index * 0.1}s`;
-            observer.observe(item);
-        });
-    </script>
 </body>
 </html>
