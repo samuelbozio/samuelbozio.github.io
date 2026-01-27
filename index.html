@@ -29,7 +29,6 @@
             padding: 0;
             font-family: 'Tahoma', 'Verdana', sans-serif;
             background-color: var(--vapor-bg);
-            /* Vaporwave Grid Background */
             background-image: 
                 linear-gradient(rgba(255, 113, 206, 0.2) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(1, 205, 254, 0.2) 1px, transparent 1px);
@@ -42,7 +41,6 @@
             justify-content: center;
         }
 
-        /* 3D Classic Bevel Effects */
         .bevel-up {
             background: var(--win-gray);
             border-top: 2px solid var(--win-light);
@@ -60,7 +58,6 @@
             background: #fff;
         }
 
-        /* Main Window */
         .main-window {
             width: 95%;
             max-width: 1200px;
@@ -70,7 +67,6 @@
             position: relative;
         }
 
-        /* Title Bar */
         .title-bar {
             background: linear-gradient(90deg, var(--win-blue-dark), var(--win-blue-light));
             padding: 4px 8px;
@@ -93,7 +89,6 @@
             cursor: pointer;
         }
 
-        /* Menu Bar */
         .menu-bar {
             padding: 4px;
             display: flex;
@@ -109,7 +104,6 @@
             text-decoration: underline;
         }
 
-        /* Toolbar */
         .toolbar {
             padding: 8px;
             display: flex;
@@ -129,20 +123,12 @@
             cursor: pointer;
             text-align: center;
         }
-        
-        .tool-btn:active {
-            border-top: 2px solid var(--win-dark);
-            border-left: 2px solid var(--win-dark);
-            border-right: 2px solid var(--win-light);
-            border-bottom: 2px solid var(--win-light);
-        }
 
         .icon-placeholder {
             font-size: 20px;
             margin-bottom: 2px;
         }
 
-        /* App Body */
         .app-body {
             flex: 1;
             display: grid;
@@ -153,7 +139,6 @@
             overflow: hidden;
         }
 
-        /* Sidebars */
         .sidebar-left {
             display: flex;
             flex-direction: column;
@@ -177,7 +162,6 @@
             background: var(--win-gray);
             border: 2px solid transparent;
             cursor: pointer;
-            transition: all 0.1s;
         }
 
         .channel-btn:hover {
@@ -186,7 +170,6 @@
             border: 2px dotted white;
         }
 
-        /* Browser Area */
         .browser-area {
             background: white;
             display: flex;
@@ -239,7 +222,6 @@
             font-size: 12px;
         }
 
-        /* Buddy List */
         .buddy-content {
             background: white;
             flex: 1;
@@ -259,7 +241,6 @@
         .status-idle { color: #888; }
         .status-online { color: green; font-weight: bold; }
 
-        /* Animation */
         .vapor-ad {
             margin-top: 20px;
             background: black;
@@ -312,7 +293,7 @@
         </div>
 
         <div class="toolbar">
-            <div class="tool-btn bevel-up" onclick="window.location.href='mailto:contato@samuelbozio.com'">
+            <div class="tool-btn bevel-up" onclick="window.location.href='mailto:contact@samuelbozio.com'">
                 <div class="icon-placeholder">📧</div>
                 Read Mail
             </div>
@@ -368,7 +349,7 @@
                         <div style="margin-bottom: 20px;">
                             <img src="https://picsum.photos/seed/tech/400/200" style="width: 100%; border: 1px solid black; margin-bottom: 10px;">
                             <h3 style="margin: 0;">FULL STACK DEVELOPER</h3>
-                            <p style="font-size: 13px;">Creativity, transparency, and organization are the core values I apply to every architectural challenge.</p>
+                            <p style="font-size: 13px;">Scalable architecture, clean code, and intuitive UX are the pillars of my development process.</p>
                             
                             <div class="resume-alert">
                                 <b>SYSTEM NOTICE:</b><br>
@@ -383,18 +364,18 @@
                             📂 Selected Works (Top Pick)
                         </div>
                         
-                        <div style="font-size: 13px;">
+                        <div style="font-size: 13px; overflow-y: auto; max-height: 350px;">
                             <a href="https://github.com/samuelbozio/BolsoFacil-TesteTecnico-Csharp-React-PLENO" class="article-title" target="_blank">01. Bolso Fácil - Full Stack</a>
-                            <p>Mid-level technical challenge featuring <b>DDD</b> architecture, <b>C#</b>, and <b>React</b>. Includes <b>Entity Framework</b>, structured <b>Logging</b>, <b>Interfaces</b>, and <b>Docker</b> orchestration with <b>SQL Server</b>.</p>
+                            <p>Advanced mid-level project using <b>DDD</b>, <b>C#</b>, and <b>React</b>. Highlighting <b>Entity Framework</b>, <b>Structured Logging</b>, <b>Interfaces</b>, and <b>Docker/SQL Server</b> containers.</p>
 
-                            <a href="https://github.com/samuelbozio/TesteInterProcess-ClinicaACME" class="article-title" target="_blank">02. ACME Clinic System</a>
-                            <p>Robust clinical management system with complex business logic.</p>
+                            <a href="https://github.com/samuelbozio/Teste_OverStep" class="article-title" target="_blank">02. OverStep Backend Engine</a>
+                            <p>Sophisticated <b>C#</b> backend implementation focused on scalable business rules, <b>LINQ</b> optimization, and clean API design patterns.</p>
 
-                            <a href="https://github.com/samuelbozio/Shared-Drawing-Panel.js" class="article-title" target="_blank">03. Shared Drawing Panel</a>
-                            <p>Real-time interactive canvas using WebSockets and JS.</p>
-                            
-                            <a href="https://github.com/samuelbozio/AudioVisualizer_JavaScript" class="article-title" target="_blank">04. Audio Visualizer</a>
-                            <p>Experimental UI with Web Audio API.</p>
+                            <a href="https://github.com/samuelbozio/TesteInterProcess-ClinicaACME" class="article-title" target="_blank">03. ACME Clinic System</a>
+                            <p>Robust management software featuring complex entity relations and secure data handling.</p>
+
+                            <a href="https://github.com/samuelbozio/Shared-Drawing-Panel.js" class="article-title" target="_blank">04. Real-time Drawing Panel</a>
+                            <p>Multi-user canvas application powered by <b>WebSockets</b> and modern <b>JavaScript</b>.</p>
                         </div>
 
                         <div class="vapor-ad bevel-down">
