@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Samuel Bozio - AOL 99</title>
+    <title>Samuel Bozio - AOL 99 Portfolio</title>
     <style>
         :root {
-            /* Paleta AOL / Windows 95 */
+            /* AOL / Windows 95 Palette */
             --win-gray: #c0c0c0;
             --win-dark: #808080;
             --win-light: #ffffff;
@@ -14,7 +14,7 @@
             --win-blue-dark: #000080;
             --win-blue-light: #1084d0;
             
-            /* Toque Vaporwave */
+            /* Vaporwave Touch */
             --vapor-pink: #ff71ce;
             --vapor-cyan: #01cdfe;
             --vapor-bg: #2b213a;
@@ -29,7 +29,7 @@
             padding: 0;
             font-family: 'Tahoma', 'Verdana', sans-serif;
             background-color: var(--vapor-bg);
-            /* Grid Vaporwave no fundo */
+            /* Vaporwave Grid Background */
             background-image: 
                 linear-gradient(rgba(255, 113, 206, 0.2) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(1, 205, 254, 0.2) 1px, transparent 1px);
@@ -42,7 +42,7 @@
             justify-content: center;
         }
 
-        /* Utilitário para o efeito 3D de botão/janela clássico */
+        /* 3D Classic Bevel Effects */
         .bevel-up {
             background: var(--win-gray);
             border-top: 2px solid var(--win-light);
@@ -60,7 +60,7 @@
             background: #fff;
         }
 
-        /* Janela Principal */
+        /* Main Window */
         .main-window {
             width: 95%;
             max-width: 1200px;
@@ -70,7 +70,7 @@
             position: relative;
         }
 
-        /* Barra de Título */
+        /* Title Bar */
         .title-bar {
             background: linear-gradient(90deg, var(--win-blue-dark), var(--win-blue-light));
             padding: 4px 8px;
@@ -93,7 +93,7 @@
             cursor: pointer;
         }
 
-        /* Barra de Menu (File, Edit...) */
+        /* Menu Bar */
         .menu-bar {
             padding: 4px;
             display: flex;
@@ -109,7 +109,7 @@
             text-decoration: underline;
         }
 
-        /* Barra de Ferramentas (Ícones) */
+        /* Toolbar */
         .toolbar {
             padding: 8px;
             display: flex;
@@ -142,7 +142,7 @@
             margin-bottom: 2px;
         }
 
-        /* Corpo da Aplicação */
+        /* App Body */
         .app-body {
             flex: 1;
             display: grid;
@@ -153,7 +153,7 @@
             overflow: hidden;
         }
 
-        /* Sidebar Esquerda (Canais) */
+        /* Sidebars */
         .sidebar-left {
             display: flex;
             flex-direction: column;
@@ -186,7 +186,7 @@
             border: 2px dotted white;
         }
 
-        /* Área Central (Navegador) */
+        /* Browser Area */
         .browser-area {
             background: white;
             display: flex;
@@ -220,11 +220,6 @@
             gap: 20px;
         }
 
-        .article-box {
-            border: 1px solid #ccc;
-            padding: 10px;
-        }
-
         .article-title {
             color: var(--win-blue-dark);
             text-decoration: underline;
@@ -244,19 +239,7 @@
             font-size: 12px;
         }
 
-        /* Sidebar Direita (Buddy List) */
-        .buddy-list {
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .buddy-header {
-            background: var(--win-dark);
-            color: white;
-            padding: 2px 5px;
-            font-size: 11px;
-        }
-
+        /* Buddy List */
         .buddy-content {
             background: white;
             flex: 1;
@@ -276,7 +259,7 @@
         .status-idle { color: #888; }
         .status-online { color: green; font-weight: bold; }
 
-        /* Estilo Vaporwave Específico */
+        /* Animation */
         .vapor-ad {
             margin-top: 20px;
             background: black;
@@ -293,14 +276,13 @@
             100% { text-shadow: 0 0 5px var(--vapor-pink); }
         }
 
-        /* Responsividade */
         @media (max-width: 900px) {
             .app-body {
                 grid-template-columns: 1fr;
                 overflow-y: auto;
             }
             .sidebar-left, .sidebar-right {
-                display: none; /* Simplificando para mobile */
+                display: none;
             }
             .toolbar {
                 display: none;
@@ -386,7 +368,7 @@
                         <div style="margin-bottom: 20px;">
                             <img src="https://picsum.photos/seed/tech/400/200" style="width: 100%; border: 1px solid black; margin-bottom: 10px;">
                             <h3 style="margin: 0;">FULL STACK DEVELOPER</h3>
-                            <p style="font-size: 13px;">Creativity, transparency, and organization are values I cherish when seeking a solution to a problem.</p>
+                            <p style="font-size: 13px;">Creativity, transparency, and organization are the core values I apply to every architectural challenge.</p>
                             
                             <div class="resume-alert">
                                 <b>SYSTEM NOTICE:</b><br>
@@ -402,17 +384,17 @@
                         </div>
                         
                         <div style="font-size: 13px;">
-                            <a href="https://github.com/samuelbozio/TesteInterProcess-ClinicaACME" class="article-title" target="_blank">01. Teste InterProcess</a>
-                            <p>Sistema clínico completo. Muito robusto.</p>
+                            <a href="https://github.com/samuelbozio/BolsoFacil-TesteTecnico-Csharp-React-PLENO" class="article-title" target="_blank">01. Bolso Fácil - Full Stack</a>
+                            <p>Mid-level technical challenge featuring <b>DDD</b> architecture, <b>C#</b>, and <b>React</b>. Includes <b>Entity Framework</b>, structured <b>Logging</b>, <b>Interfaces</b>, and <b>Docker</b> orchestration with <b>SQL Server</b>.</p>
 
-                            <a href="https://github.com/samuelbozio/Teste_OverStep" class="article-title" target="_blank">02. Teste Overstep</a>
-                            <p>Soluções criativas em backend.</p>
+                            <a href="https://github.com/samuelbozio/TesteInterProcess-ClinicaACME" class="article-title" target="_blank">02. ACME Clinic System</a>
+                            <p>Robust clinical management system with complex business logic.</p>
 
                             <a href="https://github.com/samuelbozio/Shared-Drawing-Panel.js" class="article-title" target="_blank">03. Shared Drawing Panel</a>
-                            <p>Interactive canvas using JS sockets.</p>
+                            <p>Real-time interactive canvas using WebSockets and JS.</p>
                             
                             <a href="https://github.com/samuelbozio/AudioVisualizer_JavaScript" class="article-title" target="_blank">04. Audio Visualizer</a>
-                            <p>Experiments with Web Audio API.</p>
+                            <p>Experimental UI with Web Audio API.</p>
                         </div>
 
                         <div class="vapor-ad bevel-down">
@@ -423,7 +405,8 @@
                 </div>
             </div>
 
-            <div class="sidebar-left"> <div class="bevel-up" style="height: 100%; display: flex; flex-direction: column;">
+            <div class="sidebar-left"> 
+                <div class="bevel-up" style="height: 100%; display: flex; flex-direction: column;">
                     <div class="title-bar" style="font-size: 11px; padding: 2px;">Buddy List</div>
                     <div class="buddy-content bevel-down">
                         <div style="margin-bottom: 5px;"><b>Buddies Online</b></div>
